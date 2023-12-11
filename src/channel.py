@@ -50,3 +50,38 @@ class Channel:
                         "view_count": self.view_count}
         with open(date, "w", encoding="utf-8") as file:
             json.dump(channel_data, file, indent=2, ensure_ascii=False)
+
+    def __str__(self):
+        """магический метод возвращает название и ссылку """
+        return f'{self.title} ({self.url})'
+
+    def __add__(self, other):
+        """магический метод для операции сложения"""
+
+        return int(self.subscriber_count) + int(other.subscriber_count)
+
+    def __sub__(self, other):
+        """магический метод для операции вычитания"""
+        return int(self.subscriber_count) - int(other.subscriber_count)
+
+    def __gt__(self, other):
+        """магический метод для операции сравнения «больше»"""
+        return self.subscriber_count > other.subscriber_count
+
+    def __ge__(self, other):
+        """магический метод для операции «больше или равно»"""
+        return self.subscriber_count >= other.subscriber_count
+
+    def __lt__(self, other):
+        """магический метод для операции сравнения «меньше»"""
+        return self.subscriber_count < other.subscriber_count
+
+    def __le__(self, other):
+        """магический метод для операции «меньше или равно»"""
+        return self.subscriber_count <= other.subscriber_count
+
+    def __eq__(self, other):
+        """магический метод для операции «сравнение»"""
+        return self.subscriber_count == other.subscriber_count
+
+
