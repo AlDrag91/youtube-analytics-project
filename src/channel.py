@@ -36,7 +36,7 @@ class Channel:
 
     @classmethod
     def get_service(cls):
-        """возвращает объект для работы с YouTube API"""
+        """Возвращает объект для работы с YouTube API"""
         cls.api_key = os.getenv('YT_API_KEY')
         return build('youtube', 'v3', developerKey=api_key)
 
@@ -52,36 +52,34 @@ class Channel:
             json.dump(channel_data, file, indent=2, ensure_ascii=False)
 
     def __str__(self):
-        """магический метод возвращает название и ссылку """
+        """Магический метод возвращает название и ссылку """
         return f'{self.title} ({self.url})'
 
     def __add__(self, other):
-        """магический метод для операции сложения"""
+        """Магический метод для операции сложения"""
 
         return int(self.subscriber_count) + int(other.subscriber_count)
 
     def __sub__(self, other):
-        """магический метод для операции вычитания"""
+        """Магический метод для операции вычитания"""
         return int(self.subscriber_count) - int(other.subscriber_count)
 
     def __gt__(self, other):
-        """магический метод для операции сравнения «больше»"""
+        """Магический метод для операции сравнения «больше»"""
         return self.subscriber_count > other.subscriber_count
 
     def __ge__(self, other):
-        """магический метод для операции «больше или равно»"""
+        """Магический метод для операции «больше или равно»"""
         return self.subscriber_count >= other.subscriber_count
 
     def __lt__(self, other):
-        """магический метод для операции сравнения «меньше»"""
+        """Магический метод для операции сравнения «меньше»"""
         return self.subscriber_count < other.subscriber_count
 
     def __le__(self, other):
-        """магический метод для операции «меньше или равно»"""
+        """Магический метод для операции «меньше или равно»"""
         return self.subscriber_count <= other.subscriber_count
 
     def __eq__(self, other):
-        """магический метод для операции «сравнение»"""
+        """Магический метод для операции «сравнение»"""
         return self.subscriber_count == other.subscriber_count
-
-
